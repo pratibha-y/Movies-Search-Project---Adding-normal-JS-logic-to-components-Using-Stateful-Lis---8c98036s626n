@@ -5,24 +5,22 @@ import { movies } from "../utils/movieList";
 const App = () => {
     const [inputValue, setInputValue] = useState("");
     const [results, setResult] = useState(null);
+    const list = []
 
     function handleClick(e) {
         e.preventDefault();
-    const searchTerm = inputValue.toLowerCase();
-    const filteredMovies = movies.filter(
-      (movie) => movie.toLowerCase().includes(searchTerm)
-    );
-    setResult(filteredMovies);
-  }
+        const movieList = movies.map((movie) => {
 
-    
+            return movie.title.toLowerCase();
+        })
+        if (movieList.includes(inputValue.toLowerCase()))
+            list.push(inputValue);
+        setResult(list)
 
-    function handleChange(event) { 
+    }
 
-    const latestInputeValue = event.target.value;
-        setInputValue(latestInputeValue);
-
-
+    function handleChange(e) {
+        setInputValue(e.target.value);
     }
 
     return (
@@ -33,7 +31,7 @@ const App = () => {
                     onChange={handleChange}
                     value={inputValue}
                     id="movie-input"
-                />
+                ></input>
                 <button id="button" onClick={handleClick}>
                     Search
                 </button>
