@@ -19,10 +19,9 @@ const App = () => {
 
     function handleChange(event) { 
 
-     <input type="text"
-        onChange={handleChange}value={inputValue}
-        id="movie-input"
-        />
+    const latestInputeValue = event.target.value;
+        setInputValue(latestInputeValue);
+
 
     }
 
@@ -34,7 +33,7 @@ const App = () => {
                     onChange={handleChange}
                     value={inputValue}
                     id="movie-input"
-                ></input>
+                />
                 <button id="button" onClick={handleClick}>
                     Search
                 </button>
@@ -42,7 +41,7 @@ const App = () => {
             <div id="result">
                 {results &&
                     results.map((movie) => (
-                        <div className="movie" key = {movie.id}>{movie.title}</div>
+                        <div className="movie">{movie}</div>
                     ))}
             </div>
         </div>
