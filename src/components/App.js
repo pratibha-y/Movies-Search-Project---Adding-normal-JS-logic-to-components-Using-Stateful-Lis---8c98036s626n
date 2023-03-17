@@ -19,24 +19,10 @@ const App = () => {
 
     function handleChange(event) { 
 
-        const latestInputeValue = event.target.value;
-        setInputValue(latestInputeValue);
-
-        if(latestInputeValue ==""){
-            setResult(null);
-            return;
-        };
-
-        const serachRegex = new RegExp(latestInputeValue,"i");
-
-
-        const searchFilteredMovies = movies.filter((movie)  => {
-            const doesMatchSearch = serachRegex.test(movie.title);
-            return doesMatchSearch;
-
-        });
-        setResult(searchFilteredMovies);
-
+     <input type="text"
+        onChange={handleChange}value={inputValue}
+        id="movie-input"
+        />
 
     }
 
